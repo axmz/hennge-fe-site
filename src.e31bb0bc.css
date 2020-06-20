@@ -1,0 +1,1340 @@
+.window, .window.maximized {
+  border-radius: 7px 7px 0px 0px;
+  min-width: 15rem;
+  max-width: 23rem;
+  flex: 1;
+  z-index: 1000;
+}
+@media (max-width: 75em) {
+  .window, .window.maximized {
+    min-width: 12rem;
+    max-width: 23rem;
+  }
+}
+@media (max-width: 37.5em) {
+  .window, .window.maximized {
+    min-width: 100%;
+    max-width: 100%;
+    max-height: 70vh;
+  }
+}
+.window__header {
+  border-radius: 7px 7px 0px 0px;
+  border: 1px solid #dedede;
+  padding: 0.5rem;
+  height: 2rem;
+  background-color: #666;
+  overflow: hidden;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  flex-wrap: nowrap;
+  font-weight: bold;
+  color: white;
+}
+.window__subject {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  flex: 1;
+}
+.window__maximize {
+  padding-left: 0.5rem;
+}
+.window__close {
+  padding-left: 0.5rem;
+}
+.window__main {
+  border: 1px solid #dedede;
+  height: 25rem;
+  max-height: 70vh;
+  padding: 0.5rem;
+  overflow: scroll;
+  overflow-y: auto;
+  overflow-x: auto;
+  background-color: #fff;
+}
+
+.window.maximized {
+  transform: translateY(max(-25rem, -60vh));
+}
+#windows {
+  bottom: 0;
+  left: 0;
+  background-color: transparent;
+  height: 3rem;
+  width: 100vw;
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  z-index: 2;
+}
+.from {
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.result {
+  font-weight: bold;
+  font-size: 95%;
+  color: #666666;
+  border-bottom: 1px solid #dedede;
+  padding-bottom: 0.5rem;
+}
+@media (max-width: 56.25em) {
+  .result {
+    padding-left: 0.8rem;
+  }
+}
+.result span {
+  font-size: larger;
+}
+span.count {
+  background-color: #888888;
+  color: white;
+  padding: 0px 3px;
+  border-radius: 3px;
+}
+.ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+}
+@media (max-width: 56.25em) {
+  .ellipsis {
+    width: initial;
+  }
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+.tharrow {
+  padding: 0;
+  height: 0.4rem;
+}
+.tharrow.desc {
+  padding-left: 0;
+  padding-right: 0.8rem;
+  transform: rotate(180deg);
+}
+.tharrow.asc {
+  padding-left: 0.8rem;
+  padding-right: 0;
+  transform: rotate(0deg);
+}
+.table {
+  overflow: scroll;
+  overflow-y: auto;
+  overflow-x: auto;
+  height: calc(100vh - 11rem);
+}
+.table table {
+  border-collapse: collapse;
+  font-weight: 200;
+  text-align: left;
+  width: 100%;
+}
+.table table thead {
+  background-color: #f5f5f5;
+  padding: 1rem;
+  font-weight: bold;
+  font-size: 95%;
+}
+.table table thead tr {
+  border-bottom: 1px solid #dedede;
+}
+.table table thead tr:focus-within, .table table thead tr:hover {
+  color: #0033dd;
+  cursor: pointer;
+}
+@media (max-width: 56.25em) {
+  .table table thead tr {
+    display: flex;
+  }
+}
+.table table thead tr td {
+  padding: 0.8rem;
+}
+@media (max-width: 56.25em) {
+  .table table thead tr td {
+    padding: 0.8rem;
+    padding-left: 0;
+  }
+  .table table thead tr td#count, .table table thead tr td#attach {
+    display: none;
+  }
+  .table table thead tr td:first-child {
+    padding-left: 0.8rem;
+  }
+  .table table thead tr td:not(:first-child):before {
+    content: "|";
+    padding-right: 0.8rem;
+  }
+}
+.table table tbody {
+  font-weight: 100;
+}
+.table table tbody tr {
+  border-bottom: 1px solid #dedede;
+}
+@media (max-width: 56.25em) {
+  .table table tbody tr {
+    padding: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1.2rem 1fr auto auto auto;
+    align-items: center;
+    justify-items: start;
+  }
+}
+.table table tbody tr:focus-within, .table table tbody tr:hover {
+  color: #0033dd;
+  cursor: pointer;
+}
+.table table tbody tr td {
+  padding: 0.8rem;
+}
+.table table tbody tr td.mailicon, .table table tbody tr td.arrowicon {
+  display: none;
+}
+@media (max-width: 56.25em) {
+  .table table tbody tr td {
+    padding: 0.2rem;
+  }
+  .table table tbody tr td.mailicon {
+    display: initial;
+    width: 0.8rem;
+    grid-row: 1/3;
+    grid-column: 1/2;
+  }
+  .table table tbody tr td.arrowicon {
+    display: initial;
+    width: 0.25rem;
+    grid-row: 1/2;
+    grid-column: 5/6;
+  }
+  .table table tbody tr td.from {
+    font-weight: bold;
+    font-size: smaller;
+    grid-row: 1/2;
+    grid-column: 2/3;
+  }
+  .table table tbody tr td.to {
+    font-size: smaller;
+    grid-row: 2/3;
+    grid-column: 2/3;
+  }
+  .table table tbody tr td.date {
+    font-size: smaller;
+    grid-row: 1/2;
+    grid-column: 4/5;
+    min-width: 10px;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    z-index: -1;
+  }
+  .table table tbody tr td.subject {
+    grid-row: 3/4;
+    grid-column: 1/-1;
+    width: initial;
+  }
+  .table table tbody tr td.count {
+    grid-row: 2/3;
+    grid-column: 4/5;
+    font-size: smaller;
+    justify-self: end;
+  }
+  .table table tbody tr td.clip {
+    grid-row: 1/2;
+    grid-column: 3/4;
+    justify-self: end;
+  }
+}
+.rdrCalendarWrapper {
+  box-sizing: border-box;
+  background: #ffffff;
+  display: -webkit-inline-box;
+  display: inline-flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.rdrDateDisplay{
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+}
+
+.rdrDateDisplayItem{
+  -webkit-box-flex: 1;
+          flex: 1 1;
+  width: 0;
+  text-align: center;
+  color: inherit;
+}
+
+.rdrDateDisplayItem + .rdrDateDisplayItem{
+    margin-left: 0.833em;
+  }
+
+.rdrDateDisplayItem input{
+    text-align: inherit
+  }
+
+.rdrDateDisplayItem input:disabled{
+      cursor: default;
+    }
+
+.rdrDateDisplayItemActive{}
+
+.rdrMonthAndYearWrapper {
+  box-sizing: inherit;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+}
+
+.rdrMonthAndYearPickers{
+  -webkit-box-flex: 1;
+          flex: 1 1 auto;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+.rdrMonthPicker{}
+
+.rdrYearPicker{}
+
+.rdrNextPrevButton {
+  box-sizing: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
+.rdrPprevButton {}
+
+.rdrNextButton {}
+
+.rdrMonths{
+  display: -webkit-box;
+  display: flex;
+}
+
+.rdrMonthsVertical{
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+}
+
+.rdrMonthsHorizontal > div > div > div{
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+}
+
+.rdrMonth{
+  width: 27.667em;
+}
+
+.rdrWeekDays{
+  display: -webkit-box;
+  display: flex;
+}
+
+.rdrWeekDay {
+  flex-basis: calc(100% / 7);
+  box-sizing: inherit;
+  text-align: center;
+}
+
+.rdrDays{
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.rdrDateDisplayWrapper{}
+
+.rdrMonthName{}
+
+.rdrInfiniteMonths{
+  overflow: auto;
+}
+
+.rdrDateRangeWrapper{
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.rdrDateInput {
+  position: relative;
+}
+
+.rdrDateInput input {
+    outline: none;
+  }
+
+.rdrDateInput .rdrWarning {
+    position: absolute;
+    font-size: 1.6em;
+    line-height: 1.6em;
+    top: 0;
+    right: .25em;
+    color: #FF0000;
+  }
+
+.rdrDay {
+  box-sizing: inherit;
+  width: calc(100% / 7);
+  position: relative;
+  font: inherit;
+  cursor: pointer;
+}
+
+.rdrDayNumber {
+  display: block;
+  position: relative;
+}
+
+.rdrDayNumber span{
+    color: #1d2429;
+  }
+
+.rdrDayDisabled {
+  cursor: not-allowed;
+}
+
+@supports (-ms-ime-align: auto) {
+  .rdrDay {
+    flex-basis: 14.285% !important;
+  }
+}
+
+.rdrSelected, .rdrInRange, .rdrStartEdge, .rdrEndEdge{
+  pointer-events: none;
+}
+
+.rdrInRange{}
+
+.rdrDayStartPreview, .rdrDayInPreview, .rdrDayEndPreview{
+  pointer-events: none;
+}
+
+.rdrDayHovered{}
+
+.rdrDayActive{}
+
+.rdrDateRangePickerWrapper{
+  display: -webkit-inline-box;
+  display: inline-flex;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.rdrDefinedRangesWrapper{}
+
+.rdrStaticRanges{
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+}
+
+.rdrStaticRange{
+  font-size: inherit;
+}
+
+.rdrStaticRangeLabel{}
+
+.rdrInputRanges{}
+
+.rdrInputRange{
+  display: -webkit-box;
+  display: flex;
+}
+
+.rdrInputRangeInput{}
+
+.rdrCalendarWrapper{
+  color: #000000;
+  font-size: 12px;
+}
+
+.rdrDateDisplayWrapper{
+  background-color: rgb(239, 242, 247);
+}
+
+.rdrDateDisplay{
+  margin: 0.833em;
+}
+
+.rdrDateDisplayItem{
+  border-radius: 4px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 1px 2px 0 rgba(35, 57, 66, 0.21);
+  border: 1px solid transparent;
+}
+
+.rdrDateDisplayItem input{
+    cursor: pointer;
+    height: 2.5em;
+    line-height: 2.5em;
+    border: 0px;
+    background: transparent;
+    width: 100%;
+    color: #849095;
+  }
+
+.rdrDateDisplayItemActive{
+  border-color: currentColor;
+}
+
+.rdrDateDisplayItemActive input{
+    color: #7d888d
+  }
+
+.rdrMonthAndYearWrapper {
+  -webkit-box-align: center;
+          align-items: center;
+  height: 60px;
+  padding-top: 10px;
+}
+
+.rdrMonthAndYearPickers{
+  font-weight: 600;
+}
+
+.rdrMonthAndYearPickers select{
+    -moz-appearance: none;
+         appearance: none;
+    -webkit-appearance: none;
+    border: 0;
+    background: transparent;
+    padding: 10px 30px 10px 10px;
+    border-radius: 4px;
+    outline: 0;
+    color: #3e484f;
+    background: url("data:image/svg+xml;utf8,<svg width='9px' height='6px' viewBox='0 0 9 6' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><g id='Artboard' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' transform='translate(-636.000000, -171.000000)' fill-opacity='0.368716033'><g id='input' transform='translate(172.000000, 37.000000)' fill='%230E242F' fill-rule='nonzero'><g id='Group-9' transform='translate(323.000000, 127.000000)'><path d='M142.280245,7.23952813 C141.987305,6.92353472 141.512432,6.92361662 141.219585,7.23971106 C140.926739,7.5558055 140.926815,8.06821394 141.219755,8.38420735 L145.498801,13 L149.780245,8.38162071 C150.073185,8.0656273 150.073261,7.55321886 149.780415,7.23712442 C149.487568,6.92102998 149.012695,6.92094808 148.719755,7.23694149 L145.498801,10.7113732 L142.280245,7.23952813 Z' id='arrow'></path></g></g></g></svg>") no-repeat;
+    background-position: right 8px center;
+    cursor: pointer;
+    text-align: center
+  }
+
+.rdrMonthAndYearPickers select:hover{
+      background-color: rgba(0,0,0,0.07);
+    }
+
+.rdrMonthPicker, .rdrYearPicker{
+  margin: 0 5px
+}
+
+.rdrNextPrevButton {
+  display: block;
+  width: 24px;
+  height: 24px;
+  margin: 0 0.833em;
+  padding: 0;
+  border: 0;
+  border-radius: 5px;
+  background: #EFF2F7
+}
+
+.rdrNextPrevButton:hover{
+    background: #E1E7F0;
+  }
+
+.rdrNextPrevButton i {
+    display: block;
+    width: 0;
+    height: 0;
+    padding: 0;
+    text-align: center;
+    border-style: solid;
+    margin: auto;
+    -webkit-transform: translate(-3px, 0px);
+            transform: translate(-3px, 0px);
+  }
+
+.rdrPprevButton i {
+    border-width: 4px 6px 4px 4px;
+    border-color: transparent rgb(52, 73, 94) transparent transparent;
+    -webkit-transform: translate(-3px, 0px);
+            transform: translate(-3px, 0px);
+  }
+
+.rdrNextButton i {
+    margin: 0 0 0 7px;
+    border-width: 4px 4px 4px 6px;
+    border-color: transparent transparent transparent rgb(52, 73, 94);
+    -webkit-transform: translate(3px, 0px);
+            transform: translate(3px, 0px);
+  }
+
+.rdrWeekDays {
+  padding: 0 0.833em;
+}
+
+.rdrMonth{
+  padding: 0 0.833em 1.666em 0.833em;
+}
+
+.rdrMonth .rdrWeekDays {
+    padding: 0;
+  }
+
+.rdrMonths.rdrMonthsVertical .rdrMonth:first-child .rdrMonthName{
+  display: none;
+}
+
+.rdrWeekDay {
+  font-weight: 400;
+  line-height: 2.667em;
+  color: rgb(132, 144, 149);
+}
+
+.rdrDay {
+  background: transparent;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  border: 0;
+  padding: 0;
+  line-height: 3.000em;
+  height: 3.000em;
+  text-align: center;
+  color: #1d2429
+}
+
+.rdrDay:focus {
+    outline: 0;
+  }
+
+.rdrDayNumber {
+  outline: 0;
+  font-weight: 300;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  top: 5px;
+  bottom: 5px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+.rdrDayToday .rdrDayNumber span{
+  font-weight: 500
+}
+
+.rdrDayToday .rdrDayNumber span:after{
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
+    width: 18px;
+    height: 2px;
+    border-radius: 2px;
+    background: #3d91ff;
+  }
+
+.rdrDayToday:not(.rdrDayPassive) .rdrInRange ~ .rdrDayNumber span:after,.rdrDayToday:not(.rdrDayPassive) .rdrStartEdge ~ .rdrDayNumber span:after,.rdrDayToday:not(.rdrDayPassive) .rdrEndEdge ~ .rdrDayNumber span:after,.rdrDayToday:not(.rdrDayPassive) .rdrSelected ~ .rdrDayNumber span:after{
+      background: #fff;
+    }
+
+.rdrDay:not(.rdrDayPassive) .rdrInRange ~ .rdrDayNumber span,.rdrDay:not(.rdrDayPassive) .rdrStartEdge ~ .rdrDayNumber span,.rdrDay:not(.rdrDayPassive) .rdrEndEdge ~ .rdrDayNumber span,.rdrDay:not(.rdrDayPassive) .rdrSelected ~ .rdrDayNumber span{
+          color: rgba(255, 255, 255, 0.85);
+        }
+
+.rdrSelected, .rdrInRange, .rdrStartEdge, .rdrEndEdge{
+  background: currentColor;
+  position: absolute;
+  top: 5px;
+  left: 0;
+  right: 0;
+  bottom: 5px;
+}
+
+.rdrSelected{
+  left: 2px;
+  right: 2px;
+}
+
+.rdrInRange{}
+
+.rdrStartEdge{
+  border-top-left-radius: 1.042em;
+  border-bottom-left-radius: 1.042em;
+  left: 2px;
+}
+
+.rdrEndEdge{
+  border-top-right-radius: 1.042em;
+  border-bottom-right-radius: 1.042em;
+  right: 2px;
+}
+
+.rdrSelected{
+  border-radius: 1.042em;
+}
+
+.rdrDayStartOfMonth .rdrInRange, .rdrDayStartOfMonth .rdrEndEdge, .rdrDayStartOfWeek .rdrInRange, .rdrDayStartOfWeek .rdrEndEdge{
+    border-top-left-radius: 1.042em;
+    border-bottom-left-radius: 1.042em;
+    left: 2px;
+  }
+
+.rdrDayEndOfMonth .rdrInRange,  .rdrDayEndOfMonth .rdrStartEdge,  .rdrDayEndOfWeek .rdrInRange,  .rdrDayEndOfWeek .rdrStartEdge{
+    border-top-right-radius: 1.042em;
+    border-bottom-right-radius: 1.042em;
+    right: 2px;
+  }
+
+.rdrDayStartOfMonth .rdrDayInPreview, .rdrDayStartOfMonth .rdrDayEndPreview, .rdrDayStartOfWeek .rdrDayInPreview, .rdrDayStartOfWeek .rdrDayEndPreview{
+    border-top-left-radius: 1.333em;
+    border-bottom-left-radius: 1.333em;
+    border-left-width: 1px;
+    left: 0px;
+  }
+
+.rdrDayEndOfMonth .rdrDayInPreview, .rdrDayEndOfMonth .rdrDayStartPreview, .rdrDayEndOfWeek .rdrDayInPreview, .rdrDayEndOfWeek .rdrDayStartPreview{
+   border-top-right-radius: 1.333em;
+   border-bottom-right-radius: 1.333em;
+   border-right-width: 1px;
+   right: 0px;
+ }
+
+.rdrDayStartPreview, .rdrDayInPreview, .rdrDayEndPreview{
+  background: rgba(255, 255, 255, 0.09);
+  position: absolute;
+  top: 3px;
+  left: 0px;
+  right: 0px;
+  bottom: 3px;
+  pointer-events: none;
+  border: 0px solid currentColor;
+  z-index: 1;
+}
+
+.rdrDayStartPreview{
+  border-top-width: 1px;
+  border-left-width: 1px;
+  border-bottom-width: 1px;
+  border-top-left-radius: 1.333em;
+  border-bottom-left-radius: 1.333em;
+  left: 0px;
+}
+
+.rdrDayInPreview{
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+}
+
+.rdrDayEndPreview{
+  border-top-width: 1px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  border-top-right-radius: 1.333em;
+  border-bottom-right-radius: 1.333em;
+  right: 2px;
+  right: 0px;
+}
+
+.rdrDefinedRangesWrapper{
+  font-size: 12px;
+  width: 226px;
+  border-right: solid 1px #eff2f7;
+  background: #fff;
+}
+
+.rdrDefinedRangesWrapper .rdrStaticRangeSelected{
+    color: currentColor;
+    font-weight: 600;
+  }
+
+.rdrStaticRange{
+  border: 0;
+  cursor: pointer;
+  display: block;
+  outline: 0;
+  border-bottom: 1px solid #eff2f7;
+  padding: 0;
+  background: #fff
+}
+
+.rdrStaticRange:hover .rdrStaticRangeLabel,.rdrStaticRange:focus .rdrStaticRangeLabel{
+      background: #eff2f7;
+    }
+
+.rdrStaticRangeLabel{
+  display: block;
+  outline: 0;
+  line-height: 18px;
+  padding: 10px 20px;
+  text-align: left;
+}
+
+.rdrInputRanges{
+  padding: 10px 0;
+}
+
+.rdrInputRange{
+  -webkit-box-align: center;
+          align-items: center;
+  padding: 5px 20px;
+}
+
+.rdrInputRangeInput{
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 4px;
+  text-align: center;
+  border: solid 1px rgb(222, 231, 235);
+  margin-right: 10px;
+  color: rgb(108, 118, 122)
+}
+
+.rdrInputRangeInput:focus, .rdrInputRangeInput:hover{
+    border-color: rgb(180, 191, 196);
+    outline: 0;
+    color: #333;
+  }
+
+.rdrCalendarWrapper:not(.rdrDateRangeWrapper) .rdrDayHovered .rdrDayNumber:after{
+  content: '';
+  border: 1px solid currentColor;
+  border-radius: 1.333em;
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  left: 0px;
+  right: 0px;
+  background: transparent;
+}
+
+.rdrDayPassive{
+  pointer-events: none;
+}
+
+.rdrDayPassive .rdrDayNumber span{
+    color: #d5dce0;
+  }
+
+.rdrDayPassive .rdrInRange, .rdrDayPassive .rdrStartEdge, .rdrDayPassive .rdrEndEdge, .rdrDayPassive .rdrSelected, .rdrDayPassive .rdrDayStartPreview, .rdrDayPassive .rdrDayInPreview, .rdrDayPassive .rdrDayEndPreview{
+    display: none;
+  }
+
+.rdrDayDisabled {
+  background-color: rgb(248, 248, 248);
+}
+
+.rdrDayDisabled .rdrDayNumber span{
+    color: #aeb9bf;
+  }
+
+.rdrDayDisabled .rdrInRange, .rdrDayDisabled .rdrStartEdge, .rdrDayDisabled .rdrEndEdge, .rdrDayDisabled .rdrSelected, .rdrDayDisabled .rdrDayStartPreview, .rdrDayDisabled .rdrDayInPreview, .rdrDayDisabled .rdrDayEndPreview{
+    -webkit-filter: grayscale(100%) opacity(60%);
+            filter: grayscale(100%) opacity(60%);
+  }
+
+.rdrMonthName{
+  text-align: left;
+  font-weight: 600;
+  color: #849095;
+  padding: 0.833em;
+}
+
+.dateinput {
+  position: relative;
+  background-color: mediumaquamarine;
+  display: inline-block;
+  border-radius: 7px;
+  overflow: hidden;
+  border: 1px solid lightgray;
+  margin: 1rem 0;
+}
+.dateinput__input {
+  padding: 0.7rem 3rem;
+  left: 0;
+  top: 0;
+  border: none;
+  outline: none;
+  font-size: inherit;
+}
+.dateinput__input:active, .dateinput__input:hover {
+  border: none;
+  outline: none;
+}
+.dateinput__icon, .dateinput__icon--calendar, .dateinput__icon--search {
+  height: 1.5rem;
+  width: 1.5rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 1rem 0.7rem;
+}
+.dateinput__icon--search {
+  right: 0;
+  background-color: #f5f5f5;
+  padding-left: 0.9rem;
+  border-left: 1px solid #d3d3d3;
+}
+.dateinput__icon--calendar {
+  left: 0;
+  padding-left: 0.8rem;
+}
+.date {
+  position: relative;
+}
+@media (max-width: 56.25em) {
+  .date {
+    padding-left: 0.8rem;
+  }
+}
+.date .daterange {
+  display: none;
+  position: absolute;
+  top: 4.5rem;
+  left: 0rem;
+  border: 1px solid #dedede;
+  border-radius: 7px;
+}
+.date .daterange.show {
+  display: inline-flex;
+}
+@media (max-width: 56.25em) {
+  .date .daterange {
+    margin-left: 0.8rem;
+    transform: scale(0.9);
+    transform-origin: left top;
+  }
+}
+@media (max-width: 37.5em) {
+  .date .daterange {
+    margin-left: 0.8rem;
+    transform: scale(0.8);
+    transform-origin: left top;
+  }
+}
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+
+/* Document
+   ========================================================================== */
+
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/* Sections
+   ========================================================================== */
+
+/**
+ * Remove the margin in all browsers.
+ */
+
+body {
+  margin: 0;
+}
+
+/**
+ * Render the `main` element consistently in IE.
+ */
+
+main {
+  display: block;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/* Grouping content
+   ========================================================================== */
+
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/* Text-level semantics
+   ========================================================================== */
+
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+
+a {
+  background-color: transparent;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+
+abbr[title] {
+  border-bottom: none; /* 1 */
+  text-decoration: underline; /* 2 */
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+
+/**
+ * Remove the border on images inside links in IE 10.
+ */
+
+img {
+  border-style: none;
+}
+
+/* Forms
+   ========================================================================== */
+
+/**
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
+ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+
+button,
+input { /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+
+button,
+select { /* 1 */
+  text-transform: none;
+}
+
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ */
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Correct the padding in Firefox.
+ */
+
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+
+legend {
+  box-sizing: border-box; /* 1 */
+  color: inherit; /* 2 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  white-space: normal; /* 1 */
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10.
+ * 2. Remove the padding in IE 10.
+ */
+
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+
+[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/* Interactive
+   ========================================================================== */
+
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+
+summary {
+  display: list-item;
+}
+
+/* Misc
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 10+.
+ */
+
+template {
+  display: none;
+}
+
+/**
+ * Add the correct display in IE 10.
+ */
+
+[hidden] {
+  display: none;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333333;
+  padding: 1rem 2rem;
+}
+@media (max-width: 56.25em) {
+  body {
+    padding: 1rem 0;
+  }
+}
+@media (max-width: 75em) {
+  body {
+    font-size: 0.95rem;
+  }
+}
+
+.copy {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 0.5rem;
+  font-size: smaller;
+  font-weight: bold;
+  z-index: 1;
+}
+.copy a:link, .copy a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+.copy img {
+  height: 0.8rem;
+  margin-left: 0.2rem;
+}
+
+/*# sourceMappingURL=/src.e31bb0bc.css.map */
